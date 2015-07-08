@@ -18,7 +18,7 @@ const int BUF_SIZE = 1024;
 
 int main() {
 
-	/* Create TCP socket for handling incoming connections */
+    /* Create TCP socket for handling incoming connections */
     int fd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     if (fd == -1) {
         std::cout << strerror(errno) << std::endl;
@@ -55,5 +55,5 @@ int main() {
         }
     }
 
-	return 0;
+    return 0;
 }

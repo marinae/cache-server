@@ -6,7 +6,7 @@
 
 Cleaner::~Cleaner() {
 
-	close(shmFile);
+    close(shmFile);
     if (shm_unlink(shmFilename.c_str()) == -1)
         std::cout << "[shm_unlink]:\t" << strerror(errno) << std::endl;
 
@@ -22,7 +22,7 @@ Cleaner::~Cleaner() {
 
 void Cleaner::start() {
 
-	/* Open hash table */
+    /* Open hash table */
     shmFile = shm_open(shmFilename.c_str(), O_RDWR);
     if (shmFile == -1) {
         std::cout << "[shm_open]:\t" << strerror(errno) << std::endl;
@@ -42,20 +42,20 @@ void Cleaner::start() {
     /* Run cleaner */
     while (true) {
 
-    	/* Lock semaphore */
+        /* Lock semaphore */
         if (sem_wait(semaphore) == -1) {
             std::cout << "[sem_wait]:\t" << strerror(errno) << std::endl;
             return;
         }
 
-    	hTable->checkTTL();
+        hTable->checkTTL();
 
-    	/* Unlock semaphore */
+        /* Unlock semaphore */
         if (sem_post(semaphore) == -1) {
             std::cout << "[sem_post]:\t" << strerror(errno) << std::endl;
             return;
         }
 
-    	sleep(1);
+        sleep(1);
     }
 }

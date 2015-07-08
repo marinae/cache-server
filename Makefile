@@ -7,11 +7,11 @@ EXE=mycache
 TESTEXE=testapp
 
 all:
-	$(CC) $(CFLAGS) $(LDFLAGS) $(SOURCES) -o $(EXE)
+    $(CC) $(CFLAGS) $(LDFLAGS) $(SOURCES) -o $(EXE)
 
 test:
-	$(CC) $(CFLAGS) $(TESTSOURCES) -o $(TESTEXE)
+    $(CC) $(CFLAGS) $(TESTSOURCES) -o $(TESTEXE)
 
 clean:
-	rm -f $(EXE)
-	rm -f $(TESTEXE)
+    rm -f $(EXE)
+    rm -f $(TESTEXE)

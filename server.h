@@ -25,38 +25,38 @@ static const int         CHILD        = 1;
 //+----------------------------------------------------------------------------+
 
 class Server {
-	struct event_base *base;
-	struct event  *mainEvent;
-	int           master;
-	std::string   ip;
-	uint16_t      port;
-	ServWorkers   workers;
+    struct event_base *base;
+    struct event  *mainEvent;
+    int           master;
+    std::string   ip;
+    uint16_t      port;
+    ServWorkers   workers;
 
-	/* Shared memory */
-	std::string   shmFilename;
-	int           shmFile;
-	sem_t         *semaphore;
-	std::string   semFile;
+    /* Shared memory */
+    std::string   shmFilename;
+    int           shmFile;
+    sem_t         *semaphore;
+    std::string   semFile;
 
-	/* Cleaner process ID */
-	pid_t         ttl_cleaner;
+    /* Cleaner process ID */
+    pid_t         ttl_cleaner;
 
-	int  configMaster();
-	void sendDescriptor(int worker, int fd);
-	int  createWorker(size_t i);
-	int  createCleaner();
+    int  configMaster();
+    void sendDescriptor(int worker, int fd);
+    int  createWorker(size_t i);
+    int  createCleaner();
 
 public:
     Server(std::string ip         = DEFAULT_IP,
-    	   uint16_t    port       = DEFAULT_PORT,
-    	   std::string shm        = SHM_FILE,
-    	   std::string sem        = SEM_FILE);
+           uint16_t    port       = DEFAULT_PORT,
+           std::string shm        = SHM_FILE,
+           std::string sem        = SEM_FILE);
     ~Server();
 
     /* Server methods */
     int  configure(int numWorkers = NUM_WORKERS);
-	void start();
-	void acceptClient(int fd);
+    void start();
+    void acceptClient(int fd);
 };
 
 //+----------------------------------------------------------------------------+

@@ -11,21 +11,21 @@
 //+----------------------------------------------------------------------------+
 
 class Cleaner {
-	/* Shared memory */
-	std::string shmFilename;
-	int         shmFile;
-	CHashTable  *hTable;
+    /* Shared memory */
+    std::string shmFilename;
+    int         shmFile;
+    CHashTable  *hTable;
 
-	/* Semaphore */
-	std::string semFile;
-	sem_t       *semaphore;
+    /* Semaphore */
+    std::string semFile;
+    sem_t       *semaphore;
 
 public:
-	Cleaner(std::string shmFilename, std::string semFile)
-		: shmFilename(shmFilename), semFile(semFile) {}
-	~Cleaner();
+    Cleaner(std::string shmFilename, std::string semFile)
+        : shmFilename(shmFilename), semFile(semFile) {}
+    ~Cleaner();
 
-	void start();
+    void start();
 };
 
 #endif /* __CLEANER_H__ */

@@ -339,16 +339,16 @@ void Worker::finishWriting(int fd) {
 
 void worker_cb(evutil_socket_t evs, short events, void *ptr) {
 
-	/* Last parameter is a worker object */
-	Worker *wrk = (Worker *)ptr;
+    /* Last parameter is a worker object */
+    Worker *wrk = (Worker *)ptr;
 
-	/* Receive client descriptor */
-	int client_fd = wrk->receiveDescriptor(evs);
+    /* Receive client descriptor */
+    int client_fd = wrk->receiveDescriptor(evs);
 
-	if (client_fd != -1) {
-		/* Add client to worker process */
-		wrk->addClient(client_fd);
-	}
+    if (client_fd != -1) {
+        /* Add client to worker process */
+        wrk->addClient(client_fd);
+    }
 }
 
 //+----------------------------------------------------------------------------+

@@ -9,11 +9,11 @@
 //+----------------------------------------------------------------------------+
 
 class CParser {
-	static std::string cutSpaces(std::string line);
+    static std::string cutSpaces(std::string line);
 
 public:
-	static int parseLine(std::string line, std::string *key,
-				 		 std::string *value, int *ttl);
+    static int parseLine(std::string line, std::string *key,
+                         std::string *value, int *ttl);
 };
 
 #endif /* __PARSER_H__ */
